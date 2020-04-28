@@ -145,8 +145,11 @@
 }
 
 .day-header {
+  padding-top: 3px;
   font-size: 15px;
-  margin-bottom: 5px;
+  margin-bottom: 0;
+  height: 33px;
+  background-color: #ADAEAB;
 }
 
 .temp-header {

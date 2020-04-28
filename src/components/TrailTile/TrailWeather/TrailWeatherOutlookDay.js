@@ -35,8 +35,12 @@ class TrailWeatherOutlookDay extends React.Component {
             // "https://www.shareicon.net/data/128x128/2016/10/29/848790_weather_512x512.png"
         };
 
+        const selectDay = () => {
+
+        };
+
         return (
-            <div class="outlook" style={this.props.isToday ? {backgroundColor: '#ADAEAB', borderRight: '3px solid #1E2019', position: 'relative'} : {position: 'relative'}}>
+            <div onClick={selectDay()} class="outlook" style={this.props.isToday ? {backgroundColor: '#ADAEAB', borderRight: '3px solid #1E2019', position: 'relative'} : {position: 'relative'}}>
                 <p style={this.props.isToday ? {backgroundColor: '#1E2019', color: '#BFAE48', fontSize: '15px'} : {fontSize: '15px'}} class="day-header"><b>{parseWeatherDate(this.props.weatherDay)}</b></p>
                 <img class="weather-icon" alt="icon"
                 src={determineWeatherIcon(this.props.weatherCode)}/>
