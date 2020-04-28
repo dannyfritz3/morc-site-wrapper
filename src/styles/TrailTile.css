@@ -178,21 +178,14 @@
 }
 
 .trail-bulliten-messages {
+  margin-top: 10px;
   background-color: #ADAEAB;
+  /*padding: 5px 5px 5px 5px;*/
   border-left: 3px solid #1E2019;
   border-top: 3px solid #1E2019;
   border-right: 3px solid #1E2019;
   max-height: 250px;
   overflow-y: scroll;
-}
-
-.admin-post {
-  background-color: #ADAEAB;
-  border-top: 3px solid #1E2019;
-  border-left: 3px solid #1E2019;
-  border-right: 3px solid #1E2019;
-  padding: 5px;
-  height: 100%;
 }
 
 .post-admin-author {

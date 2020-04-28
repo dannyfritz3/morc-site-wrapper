@@ -41,7 +41,7 @@ class TrailBullitenBoard extends React.Component {
 
         return (
             <div className="trail-bulliten-board" onClick={(event) => event.stopPropagation()}>
-                <div className="admin-post">
+                <div className="adimin-post">
                     <div className="post-admin-author"><b>{this.props.trailAuthor}</b></div>
                     <div className="post-admin-text">{this.props.trailComments}</div>
                 </div>
