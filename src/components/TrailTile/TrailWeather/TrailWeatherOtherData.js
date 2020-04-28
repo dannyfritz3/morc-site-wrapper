@@ -47,18 +47,30 @@ class TrailWeatherOtherData extends React.Component {
 
         return (
             <div style={{display: 'inline-block', float: "left", height: '100%', width: '90px'}}>
-                <div className="weather-other-data-block" style={{ display: 'block', height: '33px' }}>
-                    <img style={this.state.style} src={require("../../../resource/Icons/WeatherIcons/icons8-thermometer-50.png")} alt="wind" />
-                    <div style={{ display: "inline", fontSize: "12px"}}>{this.state.liveWeatherData.temp} <b>&#8457;</b></div>
-                </div>
-                <div className="weather-other-data-block" style={{display: 'block', height: '33px'}}>
-                    <img style={this.state.style} src={require("../../../resource/Icons/WeatherIcons/icons8-wet-50.png")} alt="wind" />
-                    <div style={{display: "inline", fontSize: "12px"}}>{this.state.liveWeatherData.precipitation} <b>in/hr</b></div>
-                </div>
-                <div className="weather-other-data-block" style={{display: 'block', height: '33px'}}>
-                    <img style={this.state.style} src={require("../../../resource/Icons/WeatherIcons/icons8-windsock-50.png")} alt="wind" />
-                    <div style={{display: "inline", fontSize: "11px"}}>{this.state.liveWeatherData.wind_speed} <b>mph {this.state.liveWeatherData.wind_direction}</b></div>
-                </div>
+                <WeatherDataBlock style={this.state.style}
+                    iconSrc={require("../../../resource/Icons/WeatherIcons/icons8-thermometer-50.png")}
+                    data={this.state.liveWeatherData.temp} unit={String.fromCharCode(`0x2109`)}
+                />
+                <WeatherDataBlock style={this.state.style}
+                    iconSrc={require("../../../resource/Icons/WeatherIcons/icons8-wet-50.png")}
+                    data={this.state.liveWeatherData.precipitation} unit={`in/hr`}
+                />
+                <WeatherDataBlock style={this.state.style}
+                    iconSrc={require("../../../resource/Icons/WeatherIcons/icons8-windsock-50.png")}
+                    data={this.state.liveWeatherData.wind_speed} unit={`mph ${this.state.liveWeatherData.wind_direction}`}
+                />
+            </div>
+        );
+    }
+}
+
+class WeatherDataBlock extends React.Component {
+    render(props) {
+
+        return (
+            <div className="weather-other-data-block" style={{ display: 'block', height: '33px' }}>
+                <img style={this.props.style} src={this.props.iconSrc} alt="icon" />
+                <div style={{ display: "inline", fontSize: "11px" }}>{this.props.data} <b>{this.props.unit}</b></div>
             </div>
         );
     }

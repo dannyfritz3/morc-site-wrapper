@@ -6,12 +6,27 @@ class TrailBullitenBoard extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            posts: []
+            bulletinPosts: [],
+            bulletinPostComponentArray: []
         };
     }
 
     componentWillReceiveProps(nextProps) {
-        this.setState({posts: nextProps.bulletinPosts})
+        this.setState({
+            bulletinPosts: nextProps.bulletinPosts,
+        });
+        ((bulletinPosts) => {
+            var messages = [];
+            for (var i = 0; i < bulletinPosts.length; i++) {
+                var postUsername = bulletinPosts[i][0];
+                var postMessage = bulletinPosts[i][2];
+                var postTimestamp = bulletinPosts[i][1];
+                messages.push(<BullitenPost postAuthor={postUsername} postMessage={postMessage} postTimestamp={postTimestamp} />);
+            }
+            this.setState({
+                bulletinPostComponentArray: messages
+            });
+        })(this.state.bulletinPosts);
     }
 
     render(props) {
@@ -20,7 +35,7 @@ class TrailBullitenBoard extends React.Component {
             var postMessage = clientPost[2];
             var postTimestampArray = clientPost[1];
             var clientPostComponent = <BullitenPost postAuthor={postUsername} postMessage={postMessage} postTimestamp={postTimestampArray} />;
-            var updatedArray = this.state.posts.concat(clientPostComponent);
+            var updatedArray = this.state.bulletinPosts.concat(clientPostComponent);
             this.setState({posts: updatedArray});
         };
 
@@ -31,7 +46,7 @@ class TrailBullitenBoard extends React.Component {
                     <div className="post-admin-text">{this.props.trailComments}</div>
                 </div>
                 <div className="trail-bulliten-messages">
-                    {this.state.posts.length > 0 ? this.state.posts : <EmptyBulletinBoardMessage />}
+                    {this.state.bulletinPosts.length > 0 ? this.state.bulletinPostComponentArray : <EmptyBulletinBoardMessage />}
                 </div>
                 <BullitenPostForm trailId={this.props.trailId} updateClientBulletinBoard={updateClientBulletinBoard} />
             </div>

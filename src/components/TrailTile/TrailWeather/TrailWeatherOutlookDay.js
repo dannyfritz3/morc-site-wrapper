@@ -44,7 +44,7 @@ class TrailWeatherOutlookDay extends React.Component {
                 <p style={this.props.isToday ? {backgroundColor: '#1E2019', color: '#BFAE48', fontSize: '15px'} : {fontSize: '15px'}} class="day-header"><b>{parseWeatherDate(this.props.weatherDay)}</b></p>
                 <img class="weather-icon" alt="icon"
                 src={determineWeatherIcon(this.props.weatherCode)}/>
-                <p class="temp-header">{this.props.forecastLow} | {this.props.forecastHigh}</p>
+                <p class="temp-header"><b>{this.props.forecastLow}</b> | <b>{this.props.forecastHigh}</b></p>
             </div>
         );
     }
