@@ -12,12 +12,11 @@ class TrailWeatherOutlook extends React.Component {
                 wind_speed: 0,
                 wind_direction: ""
             },
-            forecastTemps: [],
-            weatherOutlookComponentArray: []
+            forecastTemps: []
         }
     }
 
-    componentWillReceiveProps(nextProps) {
+    componentWillReceiveProps = (nextProps) => {
         this.setState({
             liveWeatherData: {
                 temp: nextProps.liveWeatherData.temp ? nextProps.liveWeatherData.temp.value : 0,
@@ -27,8 +26,10 @@ class TrailWeatherOutlook extends React.Component {
             },
             forecastTemps: nextProps.forecastTemps
         });
-        debugger;
-        ((forecastTemps) => {
+    }
+  
+    render(props) {
+        const populateWeatherOutlookComponent = (forecastTemps) => {
             var arr = [];
             for (var i = 0; i < forecastTemps.length; i++) {
                 var forecastDay = forecastTemps[i].observation_time;
@@ -41,19 +42,15 @@ class TrailWeatherOutlook extends React.Component {
                     />
                 );
             }
-            this.setState({
-                weatherOutlookComponentArray: arr
-            });
-        })(this.state.forecastTemps);
-    }
-  
-    render(props) {
+            return arr;
+        };
+
         return (
             <div class="weather-div">
                 <div class="weather-outlook-div">
                     <TrailWeatherOtherData liveWeatherData={this.props.liveWeatherData} />
                     <div style={{display: "inline-block", height: "100%"}}>
-                        {this.state.weatherOutlookComponentArray}
+                        {populateWeatherOutlookComponent(this.state.forecastTemps)}
                     </div>
                 </div>
             </div>

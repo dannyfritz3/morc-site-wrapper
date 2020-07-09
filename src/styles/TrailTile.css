@@ -38,6 +38,32 @@
   transform: max-height 500ms ease-out;
 }
 
+.trail-tile-header .active-tile {
+  cursor: pointer;
+}
+
+.active-tile {
+  box-shadow: 8px 8px 1px #1E2019;
+  max-height: 750px;
+  transform: max-height 500ms ease-in;
+}
+
+.inactive-tile {
+  box-shadow: 0 0;
+  max-height: 100px;
+  transform: max-height 500ms ease-out;
+}
+
+.active-bulletin-board {
+  max-height: 750px;
+  transform: max-height 500ms ease-in;
+}
+
+.inactive-bulletin-board {
+  max-height: 0px;
+  transform: max-height 500ms ease-out;
+}
+
 @keyframes smoothopen {
   0% {max-height: 100px;}
   50% {max-height: 750px;}
@@ -140,7 +166,7 @@
 .outlook {
   height: 100%;
   display: inline-block;
-  width: 85px;
+  width: 85.4px;
   text-align: center;
 }
 
@@ -177,10 +203,21 @@
   cursor: default;
 }
 
-.trail-bulliten-messages {
-  margin-top: 10px;
+.admin-block {
   background-color: #ADAEAB;
-  /*padding: 5px 5px 5px 5px;*/
+  border-top: 3px solid #1E2019;
+  border-left: 3px solid #1E2019;
+  border-right: 3px solid #1E2019;
+  height: 100%;
+}
+
+.admin-post {
+  padding: 5px;
+}
+
+.trail-bulliten-messages {
+  position: relative;
+  background-color: #ADAEAB;
   border-left: 3px solid #1E2019;
   border-top: 3px solid #1E2019;
   border-right: 3px solid #1E2019;
@@ -296,4 +333,22 @@
 
 .weather-other-data-block:not(:last-child) {
   border-bottom: 3px solid #1E2019;
+}
+
+.warning-icon:hover {
+  transform: scale(1.2);
+  opacity: 1;
+  cursor: pointer;
+}
+
+.warning-icon {
+  padding: 5px;
+  width: 40px;
+  margin-left: 15px;
+  opacity: 0.75;
+}
+
+.post-admin-footer:hover {
+  background-color: blue;
+  cursor: pointer;
 }

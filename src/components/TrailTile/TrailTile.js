@@ -37,36 +37,11 @@ class TrailTile extends React.Component {
             if (!el.classList.contains("active-tile")) {
                 el.classList.remove("inactive-tile");
                 el.classList.add("active-tile");
-                getBulletinMessages();
                 getWeatherData();
             } else {
                 el.classList.remove("active-tile");
                 el.classList.add("inactive-tile");
             }
-        };
-
-        const getBulletinMessages = () => {
-            var posts = [];
-            axios.get("http://localhost:4000/getBulletinBoard/" + this.props.trail_id).then((response) => {
-                this.setState({
-                    posts: response.data
-                });
-                posts = response.data
-                poplulateMessagesComponentArray(posts);
-            });
-        };
-
-        const poplulateMessagesComponentArray = (posts) => {
-            var messages = [];
-            for (var i = 0; i < posts.length; i++) {
-                var postUsername = posts[i][0];
-                var postMessage = posts[i][2];
-                var postTimestamp = posts[i][1];
-                messages.push(<BullitenPost postAuthor={postUsername} postMessage={postMessage} postTimestamp={postTimestamp} />);
-            }
-            this.setState({
-                componentArray: messages
-            });
         };
 
         const getWeatherData = async () => {
@@ -75,14 +50,6 @@ class TrailTile extends React.Component {
                 this.setState({
                     forecastTemps: response.data.forecastedWeatherData, 
                     liveWeatherData: response.data.liveWeatherData
-                });
-            });
-        };
-
-        const getBulletinMessages = () => {
-            axios.get("http://localhost:4000/getBulletinBoard/" + this.props.trail_id).then((response) => {
-                this.setState({
-                    bulletinPosts: response.data
                 });
             });
         };

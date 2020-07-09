@@ -15,7 +15,9 @@ class BullitenPost extends React.Component {
                     </div>
                 </div>
                 <div className="post-message">
-                    {this.props.postMessage}
+                    <p>
+                        {this.props.postMessage}
+                    </p>
                 </div>
             </div>
         );
